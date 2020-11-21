@@ -66,17 +66,17 @@ public class Servidor {
                 InetAddress direccion = peticion.getAddress();
 
                 TimeUnit.SECONDS.sleep(3);
-                // Conexión base de datos
+                // Conexion base de datos
                 String url = String.format("jdbc:mysql://%s:%d/%s?useSSL=false", "localhost", 3306, "servidor");
 
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection(url, "root", "root");
+                    Connection con = DriverManager.getConnection(url, "root", "diciembre17");
                     // here servidor is database name, root is username and password
                     Statement stmt = con.createStatement();
 
-                    if (stmt.executeQuery("SELECT * FROM LECTURAS WHERE ID_sensor = " + idSensor + " AND Timestamp = "
-                            + "'" + timeStampSensor + "'" + " AND lecturas = " + lecturaSensor + "").next()) {
+                    if (stmt.executeQuery("SELECT * FROM lecturas WHERE ID_sensor = " + idSensor + " AND Timestamp = "
+                            + "'" + timeStampSensor + "'" + " AND lecturas = " + lecturaSensor + ";").next()) {
 
                         // se envia mensaje DUPLICADO
 
@@ -91,8 +91,8 @@ public class Servidor {
                         // se hace insert
                         try {
                             // here servidor is database name, root is username and password
-                            int rs = stmt.executeUpdate("INSERT INTO LECTURAS (ID_sensor, Timestamp, lecturas) VALUES("
-                                    + idSensor + "," + "'" + timeStampSensor + "'" + "," + lecturaSensor + ")");
+                            int rs = stmt.executeUpdate("INSERT INTO lecturas (ID_sensor, Timestamp, lecturas) VALUES("
+                                    + idSensor + "," + "'" + timeStampSensor + "'" + "," + lecturaSensor + ");");
 
                             try (PrintWriter output = new PrintWriter(new FileWriter("log.txt", true))) {
                                 output.printf("%s\r\n", "OK");
@@ -119,7 +119,7 @@ public class Servidor {
                 // creo el datagrama
                 DatagramPacket respuesta = new DatagramPacket(buffer, buffer.length, direccion, puertoCliente);
 
-                // Envio la información
+                // Envio la informacion
                 System.out.println("Envio mensaje de confirmacion al colector\n");
                 socketUDP.send(respuesta);
 

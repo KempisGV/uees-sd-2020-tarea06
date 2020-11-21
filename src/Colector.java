@@ -40,10 +40,11 @@ public class Colector {
             final int PUERTO_SERVIDOR = 5000;
             // buffer donde se almacenara los mensajes
             byte[] buffer = new byte[1024];
+            byte[] ipAddr = new byte[] {10,10,10,1};
 
             try {
                 // Obtengo la localizacion de localhost
-                InetAddress direccionServidor = InetAddress.getByName("localhost");
+                InetAddress direccionServidor = InetAddress.getByAddress(ipAddr);
 
                 // Creo el socket de UDP
                 DatagramSocket socketUDP = new DatagramSocket();
@@ -67,7 +68,7 @@ public class Colector {
                         mensaje = sensor5.getSensorID() + "-" + sensor5.getLectura() + "-" + sensor5.getTimeStamp();
                         break;
                     default:
-                        System.out.println("Ocurrió un error");
+                        System.out.println("Ocurrio un error");
                 }
 
                 // Convierto el mensaje a bytes
