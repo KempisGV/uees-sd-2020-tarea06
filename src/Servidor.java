@@ -68,10 +68,12 @@ public class Servidor {
                 TimeUnit.SECONDS.sleep(3);
                 // Conexion base de datos
                 String url = String.format("jdbc:mysql://%s:%d/%s?useSSL=false", "localhost", 3306, "servidor");
+                String user = "root";
+                String password = "root";
 
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection(url, "root", "diciembre17");
+                    Connection con = DriverManager.getConnection(url, user, password);
                     // here servidor is database name, root is username and password
                     Statement stmt = con.createStatement();
 
