@@ -111,7 +111,7 @@ public class Colector {
                 
             } catch (SocketTimeoutException ex) {
             	backup = mensaje;
-                System.out.println("No se recibió respuesta del servidor en el tiempo límite de espera (5 segs)\n");
+                System.out.println("No se recibio respuesta del servidor en el tiempo limite de espera (5 segs)\n");
                
             }
             catch (SocketException ex) {
