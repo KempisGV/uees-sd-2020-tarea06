@@ -10,7 +10,7 @@
 3. Instalar My SQL Server utilizando el comando `sudo apt install mysql-server`.
 4. Luego ejecute el script de seguridad: `sudo mysql_secure_installation`.
 5. Tambien hay que ajustar la autentificacion y los privilegios del usuario para eso usamos el comando para abrir `sudo mysql` sql server. Para configurar la cuenta root para autenticarse usando una contraseña, ejecute el siguiente comando ALTER USER. Asegúrese de cambiar password (contraseña) a una contraseña segura de su elección y sepa que este comando cambiará la contraseña de root que estableció:`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
-6. Despues se crea la base de datos `CREATE DATABASE servidor;` y tambien las tablas `CREATE TABLE lecturas ( ID_sensor int NOT NULL, Timestamp varchar(45) DEFAULT NULL, lecturas varchar(45) DEFAULT NULL);`.
+6. Despues se crea la base de datos `CREATE DATABASE servidor;` y tambien las tablas `CREATE TABLE lecturas (ID_sensor varchar(20) NOT NULL, Timestamp varchar(20) DEFAULT NULL,lecturas varchar(45) DEFAULT NULL);`.
 7. Para comprobar que java está instalado ejecutar el comando `javac`.
 8. Una vez ubicados en la carpeta del proyecto en la máquina virtual que hará de Reportero nos movemos a la ruta src/proyecto y se necesita agregar al classpath la libreria mysql-connector-java-5.1.49.jar, para esto se utilizará el comando `export CLASSPATH=mysql-connector-java-5.1.49.jar:$CLASSPATH`.
 9. Luego ejecutamos el comando `javac Colector.java` para compilar el archivo, luego para ejecutarlo usamos `java Colector.java` 
